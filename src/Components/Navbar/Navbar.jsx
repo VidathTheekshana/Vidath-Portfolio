@@ -85,7 +85,7 @@ function Navbar() {
             <div className="logo-container">
               <div className="logo-glow"></div>
               <div className="logo">
-                <span className="logo-text">P</span>
+                <span className="logo-text">V</span>
               </div>
             </div>
 
