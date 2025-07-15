@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react"
 import "./MyWork.css"
 import mywork_data from "../data/mywork_data" // Using the new data file
+import { ExternalLink } from "lucide-react" // Using Lucide React for external link icon
 
 // Simple SVG for arrow icon (reused from Services.jsx)
 const ArrowIcon = () => (
@@ -74,21 +75,26 @@ const MyWork = () => {
             href={work.w_link}
             target="_blank"
             rel="noopener noreferrer"
-            className={`work-item ${isVisible ? "animate-in" : ""}`}
+            className={`work-card ${isVisible ? "animate-in" : ""}`}
             style={{ animationDelay: `${index * 0.1}s` }}
           >
-            <div className="work-image-wrapper">
-              <img src={work.w_img || "/placeholder.svg"} alt={work.w_name} className="work-image" />
-              <div className="image-overlay">
-                <div className="overlay-content">
-                  <h3>{work.w_name}</h3>
-                  <div className="view-project-button">
-                    View Project <ArrowIcon />
+            <div className="card-inner">
+              <div className="card-image-wrapper">
+                <img src={work.w_img || "/placeholder.svg"} alt={work.w_name} className="card-image" />
+                <div className="image-overlay">
+                  <div className="overlay-content">
+                    <h3 className="project-title">{work.w_name}</h3>
+                    <p className="project-description">{work.w_desc}</p>
+                    <div className="project-category">{work.category}</div>
+                    <button className="view-project-button">
+                      View Project <ExternalLink size={18} />
+                    </button>
                   </div>
                 </div>
               </div>
+              <div className="card-glow"></div>
+              <div className="card-border-effect"></div>
             </div>
-            <div className="work-glow"></div>
           </a>
         ))}
       </div>
