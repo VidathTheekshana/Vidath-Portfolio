@@ -68,7 +68,7 @@
 }
 
 .shooting-star::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 50%;
   right: 0;
@@ -140,7 +140,7 @@
 
 .constellation::before,
 .constellation::after {
-  content: '';
+  content: "";
   position: absolute;
   background: rgba(255, 255, 255, 0.4);
   height: 1px;
@@ -485,7 +485,8 @@
 
 /* Animations */
 @keyframes twinkle {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 0.3;
     transform: scale(1);
   }
@@ -513,7 +514,8 @@
 }
 
 @keyframes nebula-drift {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateX(0) translateY(0) scale(1);
   }
   33% {
@@ -525,7 +527,8 @@
 }
 
 @keyframes pulse-glow {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 0.5;
   }
   50% {
@@ -534,7 +537,8 @@
 }
 
 @keyframes gradient-x {
-  0%, 100% {
+  0%,
+  100% {
     background-position: 0% 50%;
   }
   50% {
@@ -552,7 +556,8 @@
 }
 
 @keyframes pulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
   }
   50% {
