@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
-import "./MyWork.css"
+import "./Mywork.css"
 import mywork_data from "../data/mywork_data" // Using the new data file
 import { ExternalLink } from "lucide-react" // Using Lucide React for external link icon
 
