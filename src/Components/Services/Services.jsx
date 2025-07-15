@@ -71,24 +71,26 @@ const Services = () => {
         {Services_Data.map((service, index) => (
           <div
             key={index}
-            className={`services-format ${isVisible ? "animate-in" : ""}`}
+            className={`service-card ${isVisible ? "animate-in" : ""}`}
             style={{ animationDelay: `${index * 0.15}s` }}
           >
-            <div className="service-number">
-              <h3>{service.s_no}</h3>
-              <div className="number-glow"></div>
-            </div>
-            <div className="service-content">
-              <h2>{service.s_name}</h2>
-              <p>{service.s_desc}</p>
-              <div className="services-readmore">
-                <p>Read More</p>
-                <ArrowIcon />
-                <div className="arrow-trail"></div>
+            <div className="card-inner">
+              <div className="service-number">
+                <h3>{service.s_no}</h3>
+                <div className="number-glow"></div>
               </div>
+              <div className="service-content">
+                <h2>{service.s_name}</h2>
+                <p>{service.s_desc}</p>
+                <div className="services-readmore">
+                  <p>Read More</p>
+                  <ArrowIcon />
+                  <div className="arrow-trail"></div>
+                </div>
+              </div>
+              <div className="card-border-effect"></div>
+              <div className="card-shine"></div>
             </div>
-            <div className="card-border"></div>
-            <div className="card-shine"></div>
           </div>
         ))}
       </div>
