@@ -2,17 +2,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 100px;
-  margin: 100px auto;
+  justify-content: flex-start; /* smoother vertical flow */
+  gap: 80px;
+  margin: 80px auto;
   max-width: 1400px;
   padding: 0 40px;
   position: relative;
   color: white;
-  min-height: 100vh;
+  min-height: auto; /* natural height */
 }
 
-/* Background Elements (reused for consistency) */
+/* Background Elements (consistent with your style) */
 .mywork-background {
   position: absolute;
   inset: 0;
@@ -75,11 +75,11 @@
   transform: rotate(-50deg);
 }
 
-/* Title Section (reused for consistency) */
+/* Title Section */
 .mywork-title {
   text-align: center;
   opacity: 0;
-  transform: translateY(50px);
+  transform: translateY(40px);
   transition: all 1s ease-out;
 }
 
@@ -141,9 +141,12 @@
 /* Work Container */
 .mywork-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 40px;
   width: 100%;
+  max-width: 1200px;
+  margin: 0 auto 60px;
+  padding: 0 20px;
 }
 
 /* Work Card */
@@ -157,7 +160,10 @@
   opacity: 0;
   transform: translateY(50px) rotateX(10deg);
   animation: card-reveal 1s ease-out forwards;
-  perspective: 1000px; /* For 3D transform */
+  perspective: 1000px;
+  min-width: 280px;
+  max-width: 320px;
+  margin: 0 auto;
 }
 
 .work-card.animate-in {
@@ -180,17 +186,23 @@
   backdrop-filter: blur(8px);
   overflow: hidden;
   transition: all 0.5s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 30px;
 }
 
 .work-card:hover .card-inner {
   border-color: rgba(74, 144, 226, 0.3);
 }
 
+/* Image Wrapper and Hover */
 .card-image-wrapper {
   position: relative;
   width: 100%;
-  padding-bottom: 66.66%; /* 3:2 aspect ratio (280/419) */
+  padding-bottom: 66.66%; /* 3:2 aspect ratio */
   overflow: hidden;
+  border-radius: 12px;
 }
 
 .card-image {
@@ -202,6 +214,7 @@
   object-fit: cover;
   display: block;
   transition: transform 0.6s ease;
+  border-radius: 12px;
 }
 
 .work-card:hover .card-image {
@@ -218,6 +231,7 @@
   padding: 25px;
   opacity: 0;
   transition: opacity 0.5s ease;
+  border-radius: 12px;
 }
 
 .work-card:hover .image-overlay {
@@ -233,8 +247,9 @@
   transform: translateY(0);
 }
 
+/* Text Content */
 .project-title {
-  font-size: 1.6rem;
+  font-size: clamp(1.4rem, 2.5vw, 1.6rem);
   font-weight: 700;
   color: white;
   margin-bottom: 10px;
@@ -242,17 +257,17 @@
 }
 
 .project-description {
-  font-size: 0.95rem;
-  color: rgba(255, 255, 255, 0.7);
+  font-size: clamp(0.9rem, 1.5vw, 1rem);
+  color: rgba(255, 255, 255, 0.75);
   margin-bottom: 15px;
   line-height: 1.5;
-  max-height: 70px; /* Limit description height */
+  max-height: 70px;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .project-category {
-  font-size: 0.85rem;
+  font-size: clamp(0.75rem, 1vw, 0.85rem);
   font-weight: 600;
   color: #87ceeb;
   background: rgba(135, 206, 235, 0.1);
@@ -263,11 +278,12 @@
   border: 1px solid rgba(135, 206, 235, 0.3);
 }
 
+/* View Project Button */
 .view-project-button {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 10px;
-  font-size: 1rem;
+  font-size: clamp(0.9rem, 1.5vw, 1rem);
   font-weight: 600;
   color: #4a90e2;
   background: linear-gradient(135deg, #4a90e2, #87ceeb);
@@ -281,6 +297,7 @@
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .view-project-button:hover {
@@ -297,6 +314,7 @@
   transform: translateX(5px);
 }
 
+/* Card Glow and Border */
 .card-glow {
   position: absolute;
   inset: 0;
@@ -305,6 +323,7 @@
   opacity: 0;
   transition: opacity 0.5s ease;
   filter: blur(20px);
+  pointer-events: none;
 }
 
 .work-card:hover .card-glow {
@@ -321,13 +340,14 @@
   mask-composite: exclude;
   opacity: 0;
   transition: opacity 0.4s ease;
+  pointer-events: none;
 }
 
 .work-card:hover .card-border-effect {
   opacity: 1;
 }
 
-/* Show More Button (reused for consistency) */
+/* Show More Button */
 .mywork-showmore {
   display: flex;
   gap: 15px;
@@ -346,6 +366,7 @@
   opacity: 0;
   transform: translateY(50px);
   animation: fade-in-up 1s ease-out forwards 0.8s;
+  justify-content: center;
 }
 
 .mywork-showmore.animate-in {
@@ -388,24 +409,25 @@
   transition: opacity 0.3s ease;
 }
 
-/* Responsive Design */
+/* Responsive */
 @media (max-width: 1024px) {
   .mywork {
-    margin: 80px auto;
+    margin: 60px auto;
     padding: 0 30px;
-    gap: 80px;
+    gap: 60px;
   }
 
   .mywork-container {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 30px;
+    max-width: 100%;
   }
 }
 
 @media (max-width: 768px) {
   .mywork {
     padding: 0 20px;
-    gap: 60px;
+    gap: 40px;
   }
 
   .mywork-title .section-title {
@@ -418,7 +440,9 @@
   }
 
   .work-card {
-    transform: translateY(30px) rotateX(5deg); /* Less aggressive on mobile */
+    min-width: 100%;
+    max-width: 100%;
+    transform: translateY(30px) rotateX(5deg);
   }
 
   .work-card:hover {
@@ -448,77 +472,38 @@
   }
 }
 
-/* Animations (reused for consistency) */
+/* Animations (reuse your existing ones) */
 @keyframes float-orb {
-  0%,
-  100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-30px) rotate(180deg);
-  }
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-30px) rotate(180deg); }
 }
 
 @keyframes text-glow {
-  0%,
-  100% {
-    text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
-  }
-  50% {
-    text-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
-  }
+  0%, 100% { text-shadow: 0 0 5px rgba(255,255,255,0.3); }
+  50% { text-shadow: 0 0 20px rgba(255,255,255,0.6); }
 }
 
 @keyframes gradient-text {
-  0%,
-  100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
 @keyframes twinkle {
-  0%,
-  100% {
-    opacity: 0.5;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.2);
-  }
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); }
 }
 
 @keyframes line-glow {
-  0%,
-  100% {
-    opacity: 0.5;
-  }
-  50% {
-    opacity: 1;
-  }
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
 }
 
 @keyframes card-reveal {
-  0% {
-    opacity: 0;
-    transform: translateY(50px) rotateX(10deg);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) rotateX(0deg);
-  }
+  0% { opacity: 0; transform: translateY(50px) rotateX(10deg); }
+  100% { opacity: 1; transform: translateY(0) rotateX(0deg); }
 }
 
 @keyframes fade-in-up {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
